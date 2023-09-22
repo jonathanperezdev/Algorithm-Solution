@@ -1,7 +1,8 @@
 package org.algorithms.books.commond_sense_guide.trie;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 /*
  * Book: A common sense guide to Data Structures and Algorithms
  * Chapter 17: It Doesn’t Hurt to Trie
@@ -32,36 +33,19 @@ public class Trie {
     }
 
     public void printTrie(){
-        print(root,"");
+        collectAllWords(root,"",new ArrayList<>()).forEach(System.out::println);
     }
 
-    private void print(TrieNode current, String word){
+    private List<String> collectAllWords(TrieNode current, String word, List<String> words){
         for (Map.Entry<String, TrieNode> letter : current.letters.entrySet()){
             if("*".equals(letter.getKey())) {
-                System.out.println(word);
+                words.add(word);
             }else{
                 word = word+letter.getKey();
-                print(letter.getValue(), word);
+                collectAllWords(letter.getValue(), word, words);
             }
         }
+
+        return words;
     }
 }
-
-class TrieNode {
-    Map<String, TrieNode> letters = new TreeMap<>();
-    public TrieNode addLetter(String letter){
-        TrieNode trieNode;
-        if("*".equals(letter)) {
-            trieNode = null;
-            letters.put(letter, null);
-        }else if(letters.containsKey(letter)){
-            trieNode = letters.get(letter);
-        } else {
-            trieNode = new TrieNode();
-            letters.put(letter, trieNode);
-        }
-
-        return trieNode;
-    }
-}
-
