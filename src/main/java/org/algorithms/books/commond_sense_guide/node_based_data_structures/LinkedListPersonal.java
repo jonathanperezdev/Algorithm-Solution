@@ -56,12 +56,14 @@ class LinkedListPersonal {
         reverseNode(previous);
         previous.setNext(current);
     }
+
+    @RequiredArgsConstructor
+    @Setter
+    @Getter
+    static
+    class Node<T> {
+        private final T data;
+        private Node next;
+    }
 }
 
-@RequiredArgsConstructor
-@Setter
-@Getter
-class Node<T> {
-    private final T data;
-    private Node next;
-}

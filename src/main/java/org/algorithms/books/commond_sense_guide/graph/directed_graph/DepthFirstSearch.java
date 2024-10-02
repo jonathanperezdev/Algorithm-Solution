@@ -10,11 +10,13 @@ public class DepthFirstSearch {
     private Set<Vertex> visited = new HashSet<>();
     private Vertex foundVertex;
     public void search(Vertex nextVertex, String valueSearched){
-
+        //Base Case: We found the node
         if(valueSearched.equals(nextVertex.getValue())){
             foundVertex = nextVertex;
             return;
         }
+
+        //Base Case: we already visited the node
         if(visited.contains(nextVertex)){
             return;
         }

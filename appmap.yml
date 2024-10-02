@@ -1,0 +1,4 @@
+name: "Algorithm-Solution"
+appmap_dir: "tmp/appmap"
+packages:
+- path: "org.algorithms"
